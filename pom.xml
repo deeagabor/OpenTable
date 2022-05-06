@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.loose.fis</groupId>
-    <artifactId>simple-registration-example</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <groupId>jetbrains</groupId>
+    <artifactId>OpenTableProject</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <main.class.name>org.loose.fis.sre.Main</main.class.name>
-        <final.jar.name>simple-registration-example</final.jar.name>
+        <maven.compiler.source>18</maven.compiler.source>
+        <main.class.name>org.loose.fis.Main</main.class.name>
+        <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -25,19 +25,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>15.0.1</version>
         </dependency>
-
-        <!--  Nitrite Java Database  -->
-        <dependency>
-            <groupId>org.dizitart</groupId>
-            <artifactId>nitrite</artifactId>
-            <version>3.4.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.10.1</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -61,5 +48,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
