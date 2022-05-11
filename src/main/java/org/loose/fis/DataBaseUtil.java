@@ -7,59 +7,91 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import org.loose.fis.controllers.LogInController;
 
 import java.io.IOException;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.*;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+
 
 public class DataBaseUtil {
 
-    /*public static void RegisterClient(ActionEvent event, String username, String password)
-    {
+    public static void changeScene(ActionEvent event, String fxmlFile, String title, String username) {
+        Parent root = null;
+
+        if (username != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(DataBaseUtil.class.getResource(fxmlFile));
+                root = loader.load();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else   // username == null => will move from one scene to another
+        {
+            try {
+                root = FXMLLoader.load(DataBaseUtil.class.getResource(fxmlFile));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle(title);
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+
+    }
+
+
+    public static void RegisterClient(ActionEvent event, String username, String password, String name, String telefon, String role) {
         Connection connection = null;
         PreparedStatement psInsert = null;
         PreparedStatement psCheckUserExist = null;
         ResultSet resultSet = null;
 
-        try{
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaunrat","root", "rootpassword");
-            psCheckUserExist = connection.prepareStatement("SELECT* FROM restaurant_table WHERE username = ?");
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
+            psCheckUserExist = connection.prepareStatement("SELECT * FROM restaurant_table WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
 
-            if(resultSet.isBeforeFirst())  //daca returneaza true inseamna ca exista deja userul
+            if (resultSet.isBeforeFirst())  //if this username already exists
             {
-                System.out.println("User already exist!");
+
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You can't use this username!");
+                alert.setContentText("User already exist!");
                 alert.show();
-            }
-            else  //daca nu mai exista acest username se inregistreaza si trece la scena cu login
+            } else  //if this username does not exist, register and go to the scene with login
             {
-                psInsert = connection.prepareStatement("INSERT INTO users (username, password)  VALUES (?, ?)");
-                psInsert.setString(1,username);
-                psInsert.setString(2,password);
+                psInsert = connection.prepareStatement("INSERT INTO restaurant_table (username,password,name,telefon,role)  VALUES (?,?,?,?,?)");
+                psInsert.setString(1, username);
+                psInsert.setString(2, password);
+                psInsert.setString(3, name);
+                psInsert.setString(4, telefon);
+                psInsert.setString(5, role);
                 psInsert.executeUpdate();
 
-                changeScenee(event,"login.fxml","Login",null);
+                changeScene(event, "/login.fxml", "Login", null);
             }
-        }catch(SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally
-        {
-            if(resultSet != null)
-            {
-                try
-                {
+        } finally {
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                }catch(SQLException e)
-                {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
 
-            if(psCheckUserExist != null)
-            {
+            if (psCheckUserExist != null) {
                 try {
                     psCheckUserExist.close();
                 } catch (SQLException e) {
@@ -67,8 +99,7 @@ public class DataBaseUtil {
                 }
             }
 
-            if(psInsert != null)
-            {
+            if (psInsert != null) {
                 try {
                     psInsert.close();
                 } catch (SQLException e) {
@@ -76,8 +107,7 @@ public class DataBaseUtil {
                 }
             }
 
-            if(connection != null)
-            {
+            if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
@@ -85,65 +115,126 @@ public class DataBaseUtil {
                 }
             }
         }
-    }*/
+    }
 
-    public static void LoginUser(ActionEvent event, String username, String password)
-    {
+    public static void RegisterRestaurant(ActionEvent event, String username, String password, String name, String telefon, String role, String adresa) {
+        Connection connection = null;
+        PreparedStatement psInsert = null;
+        PreparedStatement psCheckUserExist = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
+            psCheckUserExist = connection.prepareStatement("SELECT * FROM restaurant_table WHERE username = ?");
+            psCheckUserExist.setString(1, username);
+            resultSet = psCheckUserExist.executeQuery();
+
+            if (resultSet.isBeforeFirst()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("User already exist!");
+                alert.show();
+            } else {
+                psInsert = connection.prepareStatement("INSERT INTO restaurant_table (username, password,name,telefon,role,adresa)  VALUES (?,?,?,?,?,?)");
+                psInsert.setString(1, username);
+                psInsert.setString(2, password);
+                psInsert.setString(3, name);
+                psInsert.setString(4, telefon);
+                psInsert.setString(5, role);
+                psInsert.setString(6, adresa);
+                psInsert.executeUpdate();
+
+                changeScene(event, "/login.fxml", "Login", null);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (psCheckUserExist != null) {
+                try {
+                    psCheckUserExist.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (psInsert != null) {
+                try {
+                    psInsert.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void LoginUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        try
-        {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurnat","root", "rootpassword");
-            preparedStatement = connection.prepareStatement("SELECT password FROM restaurant_table WHERE username = ?");
-            preparedStatement.setString(1,username);
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
+            preparedStatement = connection.prepareStatement("SELECT password, role, name FROM restaurant_table WHERE username = ?");
+            preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
-            if(!resultSet.isBeforeFirst()) //daca nu e intordusa bine parola(care este in baza de date fata de cea introdusa de user) se afiseaza user not found
+            if (!resultSet.isBeforeFirst()) //if this username does not exist in the database
             {
-                System.out.println("User not found in database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Provided credentials are incorrect");
+                alert.setContentText("Incorrect username!");
                 alert.show();
-            }
-            else  //userul exista in database
+            } else  //if this username exists in the database then it is checked if the password entered is the same as the one in the database
             {
-                while(resultSet.next())
-                {
+                while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
-                    // String retrievedRole = resultSet.getString("role");   ///PENTRU ROL ATUNCI CAND FACI REGISTER????
-                    if(retrievedPassword.equals(password))    //daca parola introdusa de user este aceeasi cu cea din bazade date
-                        System.out.println("success");
-                        /*changeScenee(event,"chooseRole.fxml","choose Role",null ); //DIN LOGIN SA MEARGA IN ROLE CHANGE*/
-                    else
-                    {
-                        System.out.println("Password didn't match!");
+                    System.out.println(retrievedPassword);
+                    if (retrievedPassword.equals(encodePassword(username,password))) {
+                        String retrievedRole = resultSet.getString("role");
+                        System.out.println(retrievedRole);
+                        if (retrievedRole.equalsIgnoreCase("restaurant")) {
+                            String retrievedNameSalon = resultSet.getString("name");
+                            System.out.println(retrievedNameSalon);
+                            changeScene(event, "/restaurant.fxml", retrievedNameSalon, null);
+                        }
+                        else if (retrievedRole.equalsIgnoreCase("client"))
+                            changeScene(event, "/restaurantList.fxml", "Choose the Restaurant!", null);
+
+                    }
+                    else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("Te provided credentials are incorrect!");
+                        alert.setContentText("Incorrect password");
                         alert.show();
                     }
                 }
             }
 
-        }catch(SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
-        }finally
-        {
-            if(resultSet != null)
-            {
-                try
-                {
+        } finally {
+            if (resultSet != null) {
+                try {
                     resultSet.close();
-                }catch(SQLException e)
-                {
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
 
-            if(preparedStatement != null)
-            {
+            if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
                 } catch (SQLException e) {
@@ -151,8 +242,7 @@ public class DataBaseUtil {
                 }
             }
 
-            if(connection != null)
-            {
+            if (connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
@@ -160,7 +250,25 @@ public class DataBaseUtil {
                 }
             }
         }
+    }
 
+    public static String encodePassword(String salt, String password) {
+        MessageDigest md = getMessageDigest();
+        md.update(salt.getBytes(StandardCharsets.UTF_8));
+        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        // This is the way a password should be encoded when checking the credentials
+        return new String(hashedPassword, StandardCharsets.UTF_8)
+                .replace("\"", ""); //to be able to save in JSON format
+    }
+
+    private static MessageDigest getMessageDigest() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException("SHA-512 does not exist!");
+        }
+        return md;
     }
 }
 
