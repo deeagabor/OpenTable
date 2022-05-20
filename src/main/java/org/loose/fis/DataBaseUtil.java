@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import org.loose.fis.controllers.RestaurantListController;
+import org.loose.fis.controllers.addServiceController;
 
 import java.io.IOException;
 
@@ -22,6 +24,10 @@ import java.sql.DriverManager;
 
 public class DataBaseUtil {
 
+
+    private static Stage stage;
+    private static Scene scene;
+    private static Parent root;
     public static void changeScene(ActionEvent event, String fxmlFile, String title, String username) {
         Parent root = null;
 
@@ -189,7 +195,7 @@ public class DataBaseUtil {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
-            preparedStatement = connection.prepareStatement("SELECT password, role, name FROM restaurant_table WHERE username = ?");
+            preparedStatement = connection.prepareStatement("SELECT password, role, name, telefon, adresa FROM restaurant_table WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
 
@@ -202,17 +208,54 @@ public class DataBaseUtil {
             {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
-                    System.out.println(retrievedPassword);
                     if (retrievedPassword.equals(encodePassword(username,password))) {
                         String retrievedRole = resultSet.getString("role");
-                        System.out.println(retrievedRole);
                         if (retrievedRole.equalsIgnoreCase("restaurant")) {
-                            String retrievedNameSalon = resultSet.getString("name");
-                            System.out.println(retrievedNameSalon);
-                            changeScene(event, "/restaurant.fxml", retrievedNameSalon, null);
+                            String retrievedTelRestaurant = resultSet.getString("telefon");
+                            String retrievedAdressRestaurant = resultSet.getString("adresa");
+                            String retrievedNameRestaurant = resultSet.getString("name");
+
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(DataBaseUtil.class.getResource("/addService.fxml"));
+                            try {
+                                root = loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+
+                            addServiceController addController = loader.getController();
+                            addController.setRestaurant(username);
+                            addController.setLabel(retrievedNameRestaurant);
+                            addController.setTelefon(retrievedTelRestaurant);
+                            addController.setAdresa(retrievedAdressRestaurant);
+
+
+                            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle(retrievedNameRestaurant);
+                            stage.show();
                         }
                         else if (retrievedRole.equalsIgnoreCase("client"))
-                            changeScene(event, "/restaurantList.fxml", "Choose the Restaurant!", null);
+                        {
+                            FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(DataBaseUtil.class.getResource("/restaurantList.fxml"));
+                            try {
+                                root=loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            RestaurantListController restaurantListController = loader.getController();
+                            restaurantListController.setUsername(username);
+
+                            stage =(Stage)((Node)event.getSource()).getScene().getWindow();
+                            scene = new Scene(root);
+                            stage.setScene(scene);
+                            stage.setTitle("Choose Restaurant!");
+                            stage.show();
+                        }
 
                     }
                     else {
