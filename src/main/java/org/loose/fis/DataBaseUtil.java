@@ -57,7 +57,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "casa2019");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM restaurant_table WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -124,7 +124,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "casa2019");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
             psCheckUserExist = connection.prepareStatement("SELECT * FROM restaurant_table WHERE username = ?");
             psCheckUserExist.setString(1, username);
             resultSet = psCheckUserExist.executeQuery();
@@ -188,7 +188,7 @@ public class DataBaseUtil {
         ResultSet resultSet = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "casa2019");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/restaurant", "root", "rootpassword");
             preparedStatement = connection.prepareStatement("SELECT password, role, name FROM restaurant_table WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
