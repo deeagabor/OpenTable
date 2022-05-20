@@ -1,24 +1,6 @@
 org\loose\fis\controllers\ChooseRole.class
 org\loose\fis\controllers\LogInController$1.class
-<<<<<<< Updated upstream
 org\loose\fis\controllers\ChooseRole$2.class
-org\loose\fis\controllers\RegistrationRestaurantController$1.class
-org\loose\fis\controllers\ChooseRole$1.class
-org\loose\fis\controllers\RegistrationRestaurantController$2.class
-org\loose\fis\controllers\LogInController$2.class
-org\loose\fis\controllers\LogInController.class
-org\loose\fis\controllers\RestaurantListController.class
-org\loose\fis\DataBaseUtil.class
-org\loose\fis\controllers\RegistrationRestaurantController.class
-org\loose\fis\controllers\RegistrationClientController.class
-org\loose\fis\Main.class
-org\loose\fis\controllers\RegistrationClientController$2.class
-org\loose\fis\controllers\RestaurantController.class
-org\loose\fis\controllers\RegistrationClientController$1.class
-=======
-org\loose\fis\controllers\platesListController.class
-org\loose\fis\controllers\ChooseRole$2.class
-org\loose\fis\MyListener.class
 org\loose\fis\controllers\RegistrationRestaurantController$2.class
 org\loose\fis\DataBaseUtil.class
 org\loose\fis\controllers\ConnectionDB.class
@@ -28,12 +10,9 @@ org\loose\fis\Main.class
 org\loose\fis\controllers\RestaurantController.class
 org\loose\fis\controllers\RegistrationClientController$1.class
 org\loose\fis\controllers\RestaurantListController$1.class
-org\loose\fis\controllers\RestaurantController$1.class
 org\loose\fis\controllers\RegistrationRestaurantController$1.class
 org\loose\fis\controllers\ChooseRole$1.class
 org\loose\fis\controllers\LogInController$2.class
 org\loose\fis\controllers\LogInController.class
 org\loose\fis\controllers\RestaurantListController.class
 org\loose\fis\controllers\RegistrationClientController$2.class
-org\loose\fis\model\service.class
->>>>>>> Stashed changes
