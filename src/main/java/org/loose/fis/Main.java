@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static final String CURRENCY = "RON";
 
     public void start(Stage primaryStage) throws Exception {
         //stage = primaryStage;
