@@ -77,7 +77,7 @@ public class TableViewClientController implements Initializable {
                             queryOutput.getInt("idappointments"),
                             queryOutput.getString("restaurantName"),
                             queryOutput.getDate("date"),
-                            queryOutput.getString("ora")));
+                        queryOutput.getString("ora")));
                 }
 
 

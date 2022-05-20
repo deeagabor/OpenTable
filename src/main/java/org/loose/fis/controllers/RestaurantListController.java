@@ -57,7 +57,7 @@ public class RestaurantListController implements Initializable {
         }
 
         select.setOnAction(new EventHandler<ActionEvent>() {
-            private Parent root;
+             private Parent root;
             @Override
             public void handle(ActionEvent event) {
 

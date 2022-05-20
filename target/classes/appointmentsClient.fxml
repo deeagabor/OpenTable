@@ -14,7 +14,7 @@
                 <TableColumn fx:id="id" prefWidth="61.0" text="ID" />
                 <TableColumn fx:id="restaurant" prefWidth="140.66669464111328" text="Restaurant" />
                 <TableColumn fx:id="data" minWidth="0.0" prefWidth="105.33331298828125" text="Data" />
-                <TableColumn fx:id="ora" minWidth="0.0" prefWidth="105.33331298828125" text="Ora" />
+            <TableColumn fx:id="ora" minWidth="0.0" prefWidth="105.33331298828125" text="Ora" />
                 <TableColumn fx:id="edit" minWidth="0.0" prefWidth="157.33334350585938" text="Edit" />
             </columns>
         </TableView>
@@ -23,6 +23,6 @@
                 <Font name="Georgia" size="24.0" />
             </font>
         </Label>
-        <Button fx:id="refresh" layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#refreshTable" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Refresh" />
+      <Button fx:id="refresh" layoutX="14.0" layoutY="110.0" mnemonicParsing="false" onMouseClicked="#refreshTable" style="-fx-cursor: hand; -fx-background-color: transparent;" text="Refresh" />
     </children>
 </AnchorPane>

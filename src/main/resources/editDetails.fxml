@@ -24,16 +24,16 @@
                 <Font name="Georgia" size="16.0" />
             </font>
         </Button>
-        <Label layoutX="225.0" layoutY="33.0" text="Edit Details">
-            <font>
-                <Font name="Georgia" size="34.0" />
-            </font>
-        </Label>
-        <Label layoutX="169.0" layoutY="295.0" text="Telefon">
-            <font>
-                <Font name="Georgia" size="18.0" />
-            </font>
-        </Label>
-        <TextField fx:id="telefon" layoutX="249.0" layoutY="277.0" prefHeight="37.0" prefWidth="204.0" />
+      <Label layoutX="225.0" layoutY="33.0" text="Edit Details">
+         <font>
+            <Font name="Georgia" size="34.0" />
+         </font>
+      </Label>
+      <Label layoutX="169.0" layoutY="295.0" text="Telefon">
+         <font>
+            <Font name="Georgia" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="telefon" layoutX="249.0" layoutY="277.0" prefHeight="37.0" prefWidth="204.0" />
     </children>
 </Pane>

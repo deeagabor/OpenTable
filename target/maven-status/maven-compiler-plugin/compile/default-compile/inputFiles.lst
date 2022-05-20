@@ -1,18 +1,15 @@
-<<<<<<< Updated upstream
-=======
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\platesListController.java
->>>>>>> Stashed changes
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\RestaurantController.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\RestaurantListController.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\ChooseRole.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\RegistrationClientController.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\DataBaseUtil.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\LogInController.java
-<<<<<<< Updated upstream
-=======
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\ConnectionDB.java
->>>>>>> Stashed changes
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\controllers\RegistrationRestaurantController.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\Main.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\model\service.java
-C:\Users\Fiat Iancu\IdeaProjects\OpenTableProject\src\main\java\org\loose\fis\MyListener.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\ConnectionDB.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\TableViewRestaurantController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\TableViewClientController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\model\appointmentsRestaurant.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\RestaurantController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\ChooseRole.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\editDetailsController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\Main.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\addServiceController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\LogInController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\RegistrationRestaurantController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\RestaurantListController.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\DataBaseUtil.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\model\appointmentsClient.java
+C:\Users\Fiat Iancu\IdeaProjects\OpenTableP\src\main\java\org\loose\fis\controllers\RegistrationClientController.java

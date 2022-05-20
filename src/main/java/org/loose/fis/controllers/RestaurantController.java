@@ -93,20 +93,20 @@ public class RestaurantController implements Initializable {
                                 retrievedDate.equals(String.valueOf(calendar.getValue()))) ok = false;
                     }
                     if(ok)
-                    {
-                        psInsert = connectionDB.prepareStatement("INSERT INTO appointments (restaurantName,clientName,date,ora)  VALUES (?,?,?,?)");
-                        psInsert.setString(1, restaurant);
-                        psInsert.setString(2, client);
-                        psInsert.setString(3, String.valueOf(calendar.getValue()));
-                        psInsert.setString(4, String.valueOf(ora.getValue()));
-                        psInsert.executeUpdate();
+                        {
+                            psInsert = connectionDB.prepareStatement("INSERT INTO appointments (restaurantName,clientName,date,ora)  VALUES (?,?,?,?)");
+                            psInsert.setString(1, restaurant);
+                            psInsert.setString(2, client);
+                            psInsert.setString(3, String.valueOf(calendar.getValue()));
+                            psInsert.setString(4, String.valueOf(ora.getValue()));
+                            psInsert.executeUpdate();
 
-                    }
-                    else{
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("The Date is not available, please select anotherone!");
-                        alert.show();
-                    }
+                        }
+                        else{
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setContentText("The Date is not available, please select anotherone!");
+                            alert.show();
+                        }
 
                 } catch (
                         SQLException e) {
