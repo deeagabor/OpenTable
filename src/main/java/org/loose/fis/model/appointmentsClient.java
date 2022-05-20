@@ -6,7 +6,6 @@ public class appointmentsClient {
 
     int id;
     String restaurant;
-    String plates;
     Date data;
 
 
@@ -27,14 +26,6 @@ public class appointmentsClient {
 
     public void setRestaurant(String restaurant) {
         this.restaurant = restaurant;
-    }
-
-    public String getPlates() {
-        return plates;
-    }
-
-    public void setPlates(String plates) {
-        this.plates = plates;
     }
 
     public Date getData() {
